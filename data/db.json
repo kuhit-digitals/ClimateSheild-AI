@@ -1,0 +1,278 @@
+{
+  "businesses": [
+    {
+      "id": "b01",
+      "name": "Sahyadri Agro Foods",
+      "type": "Food processing",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "fin": 48,
+      "flood": 62,
+      "heat": 55,
+      "water": 40,
+      "assessed": "2026-10-06",
+      "isDemo": true,
+      "context": "Seasonal produce is stored on the ground floor of a unit near a drainage channel."
+    },
+    {
+      "id": "b02",
+      "name": "Godavari Handloom Weavers",
+      "type": "Textile weaving",
+      "city": "Nashik",
+      "state": "Maharashtra",
+      "fin": 66,
+      "flood": 70,
+      "heat": 58,
+      "water": 52,
+      "assessed": "2026-10-02",
+      "isDemo": true,
+      "context": "Looms and yarn stock sit close to the river floodplain, with limited cash reserves."
+    },
+    {
+      "id": "b03",
+      "name": "Tapi Textile Dyeing Works",
+      "type": "Textile dyeing",
+      "city": "Surat",
+      "state": "Gujarat",
+      "fin": 72,
+      "flood": 88,
+      "heat": 70,
+      "water": 76,
+      "assessed": "2026-10-09",
+      "isDemo": true,
+      "context": "A water-intensive process in a low-lying industrial cluster.",
+      "updatedAt": "2026-10-09T15:59:54.481Z"
+    },
+    {
+      "id": "b04",
+      "name": "Vidarbha Cold Chain Services",
+      "type": "Cold storage",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "fin": 70,
+      "flood": 35,
+      "heat": 92,
+      "water": 60,
+      "assessed": "2026-09-29",
+      "isDemo": true,
+      "context": "Refrigeration load rises sharply in peak summer, and the unit carries significant debt."
+    },
+    {
+      "id": "b05",
+      "name": "Kothrud Artisan Bakery",
+      "type": "Bakery",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "fin": 30,
+      "flood": 28,
+      "heat": 40,
+      "water": 25,
+      "assessed": "2026-10-08",
+      "isDemo": true,
+      "context": "Small urban premises with diversified local customers."
+    },
+    {
+      "id": "b06",
+      "name": "Nashik Valley Grape Packers",
+      "type": "Fruit packing",
+      "city": "Nashik",
+      "state": "Maharashtra",
+      "fin": 55,
+      "flood": 40,
+      "heat": 68,
+      "water": 82,
+      "assessed": "2026-09-25",
+      "isDemo": true,
+      "context": "Depends on irrigation-linked supply from partner farms."
+    },
+    {
+      "id": "b07",
+      "name": "Chakan Auto Components",
+      "type": "Auto parts",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "fin": 35,
+      "flood": 45,
+      "heat": 38,
+      "water": 30,
+      "assessed": "2026-10-01",
+      "isDemo": true,
+      "context": "Established units with steady order books and moderate site exposure."
+    },
+    {
+      "id": "b08",
+      "name": "Varachha Diamond Polishing",
+      "type": "Gem polishing",
+      "city": "Surat",
+      "state": "Gujarat",
+      "fin": 78,
+      "flood": 90,
+      "heat": 60,
+      "water": 55,
+      "assessed": "2026-10-05",
+      "isDemo": true,
+      "context": "High-value inventory is held in a flood-prone locality with a thin margin."
+    },
+    {
+      "id": "b09",
+      "name": "Nagpur Masala Mills",
+      "type": "Spice milling",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "fin": 40,
+      "flood": 30,
+      "heat": 72,
+      "water": 48,
+      "assessed": "2026-09-30",
+      "isDemo": true,
+      "context": "Grinding and storage areas are poorly ventilated in summer."
+    },
+    {
+      "id": "b10",
+      "name": "Wardha Road Print House",
+      "type": "Printing",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "fin": 22,
+      "flood": 20,
+      "heat": 35,
+      "water": 18,
+      "assessed": "2026-09-22",
+      "isDemo": true,
+      "context": "Commercial printing unit with minimal direct hazard vulnerability."
+    },
+    {
+      "id": "b11",
+      "name": "Panchavati Dairy Cooperative",
+      "type": "Dairy",
+      "city": "Nashik",
+      "state": "Maharashtra",
+      "fin": 60,
+      "flood": 50,
+      "heat": 82,
+      "water": 70,
+      "assessed": "2026-10-03",
+      "isDemo": true,
+      "context": "Milk quality and yield are sensitive to heat; fodder supply depends on rainfall."
+    },
+    {
+      "id": "b12",
+      "name": "Pandesara Embroidery Cluster",
+      "type": "Embroidery",
+      "city": "Surat",
+      "state": "Gujarat",
+      "fin": 80,
+      "flood": 92,
+      "heat": 74,
+      "water": 70,
+      "assessed": "2026-10-04",
+      "isDemo": true,
+      "context": "Several small units share a flood-prone site and have weak savings buffers."
+    },
+    {
+      "id": "b13",
+      "name": "Hinjewadi IT Services",
+      "type": "IT services",
+      "city": "Pune",
+      "state": "Maharashtra",
+      "fin": 18,
+      "flood": 30,
+      "heat": 25,
+      "water": 15,
+      "assessed": "2026-10-08",
+      "isDemo": true,
+      "context": "Office-based operations with remote-work fallback."
+    }
+  ],
+  "simulations": [
+    {
+      "id": "sim_04003823",
+      "businessId": "b03",
+      "businessName": "Tapi Textile Dyeing Works",
+      "hazard": "multi-hazard",
+      "level": null,
+      "scenarioValues": {
+        "fin": 72,
+        "flood": 88,
+        "heat": 70,
+        "water": 76
+      },
+      "baselineScore": 76,
+      "baselineBand": "High",
+      "scenarioScore": 76,
+      "scenarioBand": "High",
+      "difference": 0,
+      "deltaText": "0",
+      "createdAt": "2026-10-09T15:59:49.651Z",
+      "note": "Rule-based what-if scenario simulation; deterministic projection based on portfolio model."
+    },
+    {
+      "id": "sim_77c28cc4",
+      "businessId": "biz_2442336f",
+      "businessName": "Test Hackathon Solar Hub Updated",
+      "hazard": "flood",
+      "level": 95,
+      "scenarioValues": {
+        "fin": 80,
+        "flood": 95,
+        "heat": 80,
+        "water": 80
+      },
+      "baselineScore": 80,
+      "baselineBand": "High",
+      "scenarioScore": 83,
+      "scenarioBand": "High",
+      "difference": 3,
+      "deltaText": "+3",
+      "createdAt": "2026-10-09T13:13:11.448Z",
+      "note": "Rule-based what-if scenario simulation; deterministic projection based on portfolio model."
+    }
+  ],
+  "alerts": [
+    {
+      "id": "a1",
+      "hazard": "heat",
+      "level": "elevated",
+      "title": "Elevated heat exposure — Nagpur",
+      "region": "Nagpur, Maharashtra",
+      "summary": "Sample scenario: sustained high temperatures stress refrigeration and ventilation in heat-sensitive units.",
+      "status": "Open",
+      "businessIds": [
+        "b04",
+        "b09"
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z",
+      "updatedAt": "2026-10-09T13:13:11.461Z"
+    },
+    {
+      "id": "a2",
+      "hazard": "flood",
+      "level": "moderate",
+      "title": "Heavy-rainfall monitoring — Surat",
+      "region": "Surat, Gujarat",
+      "summary": "Sample scenario: heavy rainfall is being monitored for low-lying industrial clusters near the river.",
+      "status": "Monitoring",
+      "businessIds": [
+        "b03",
+        "b08",
+        "b12"
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    },
+    {
+      "id": "a3",
+      "hazard": "water",
+      "level": "moderate",
+      "title": "Water-scarcity watch — Nashik",
+      "region": "Nashik, Maharashtra",
+      "summary": "Sample scenario: reduced reservoir levels may affect water-dependent processing and farm supply.",
+      "status": "Open",
+      "businessIds": [
+        "b02",
+        "b06",
+        "b11"
+      ],
+      "createdAt": "2026-10-09T00:00:00.000Z"
+    }
+  ]
+}

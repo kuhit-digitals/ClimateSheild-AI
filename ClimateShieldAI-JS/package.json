@@ -1,0 +1,10 @@
+{
+  "name": "climateshield-ai-js",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ClimateShield AI dashboard with a Node.js/Express API and persistent JSON storage",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "dev": "node --watch server.js" },
+  "engines": { "node": ">=18" },
+  "dependencies": { "express": "^4.21.2" }
+}

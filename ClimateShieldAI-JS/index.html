@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClimateShield AI — Enterprise Climate Risk Intelligence</title>
+  <meta name="description" content="Prototype climate-risk dashboard for assessing MSME vulnerability. Factual rule-based risk intelligence and scenario simulation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-view="overview">
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-logo" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M8.5 12.5c1.2-1.2 2.3-1.2 3.5 0s2.3 1.2 3.5 0"/></symbol>
+      <symbol id="i-overview" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+      <symbol id="i-assessments" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9z"/><path d="M9 14l2 2 4-4"/></symbol>
+      <symbol id="i-climate" viewBox="0 0 24 24"><path d="M7 18a4 4 0 010-8 5.5 5.5 0 0110.6 1.5A3.3 3.3 0 0117 18H7z"/></symbol>
+      <symbol id="i-simulator" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></symbol>
+      <symbol id="i-alerts" viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0112 0v5l1.5 2h-15L6 16z"/><path d="M10 21h4"/></symbol>
+      <symbol id="i-reports" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="app" id="app">
+
+    <!-- Sidebar navigation -->
+    <aside class="sidebar" id="sidebar" aria-label="Sidebar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><svg class="icon"><use href="#i-logo"/></svg></span>
+        <span class="brand-name">ClimateShield <span>AI</span></span>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><button type="button" class="nav-link" data-nav="overview"><svg class="icon" aria-hidden="true"><use href="#i-overview"/></svg>Overview</button></li>
+          <li><button type="button" class="nav-link" data-nav="assessments"><svg class="icon" aria-hidden="true"><use href="#i-assessments"/></svg>Business Assessments</button></li>
+          <li><button type="button" class="nav-link" data-nav="simulator"><svg class="icon" aria-hidden="true"><use href="#i-simulator"/></svg>Risk Simulator</button></li>
+          <li><button type="button" class="nav-link" data-nav="climate"><svg class="icon" aria-hidden="true"><use href="#i-climate"/></svg>Climate Intelligence</button></li>
+          <li><button type="button" class="nav-link" data-nav="alerts"><svg class="icon" aria-hidden="true"><use href="#i-alerts"/></svg>Alerts</button></li>
+          <li><button type="button" class="nav-link" data-nav="reports"><svg class="icon" aria-hidden="true"><use href="#i-reports"/></svg>Reports</button></li>
+          <li><button type="button" class="nav-link" data-nav="settings"><svg class="icon" aria-hidden="true"><use href="#i-settings"/></svg>Settings & Methodology</button></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-foot">
+        <p><strong>ClimateShield Engine v1.0</strong></p>
+        <p>Deterministic scoring: 40% financial + 60% climate exposure average.</p>
+      </div>
+    </aside>
+
+    <div class="main">
+
+      <!-- Top header with direct Add Business action -->
+      <header class="topbar">
+        <button type="button" class="icon-btn menu-btn" id="menuBtn" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+
+        <div class="page-heading">
+          <h1 id="pageTitle">Risk Overview</h1>
+          <p id="pageSubtitle">Climate-vulnerability snapshot of MSME portfolio borrowers.</p>
+        </div>
+
+        <div class="topbar-tools">
+          <label class="search" for="globalSearch">
+            <span class="sr-only">Search businesses by name, type or location</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <input id="globalSearch" type="search" placeholder="Search businesses…" autocomplete="off">
+          </label>
+
+          <!-- Prominent Add Business Button -->
+          <button type="button" class="btn btn-primary btn-add-business" id="topbarAddBtn">
+            <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add Business
+          </button>
+
+          <!-- API Status indicator -->
+          <span class="api-pill" id="apiStatusPill" title="Backend connection status">
+            <span class="api-dot" aria-hidden="true"></span>
+            <span id="apiStatusText">Checking API…</span>
+          </span>
+
+          <button type="button" class="icon-btn notif-btn" id="notifBtn" aria-label="Notifications">
+            <svg class="icon" aria-hidden="true"><use href="#i-alerts"/></svg>
+            <span class="notif-count" id="notifCount"></span>
+          </button>
+
+          <div class="profile">
+            <span class="avatar" aria-hidden="true">RA</span>
+            <span class="profile-text"><strong>Risk Analyst</strong><small>Lead Underwriter</small></span>
+          </div>
+        </div>
+      </header>
+
+      <div class="demo-banner" role="note">
+        <svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
+        <p><strong>Climate Risk Screening Engine:</strong> Assessments use a transparent, deterministic scoring rule (40% financial vulnerability + 60% mean hazard exposure). Seed businesses are labeled DEMO DATA.</p>
+      </div>
+
+      <main id="main" tabindex="-1">
+
+        <!-- 1. OVERVIEW VIEW -->
+        <!-- KPI summary cards -->
+        <section data-views="overview" aria-label="Summary metrics">
+          <div class="metric-grid" id="metricCards"></div>
+        </section>
+
+        <!-- Category legend -->
+        <section class="legend-card" data-views="overview climate" aria-label="Category legend">
+          <div class="legend" id="legend"></div>
+        </section>
+
+        <!-- Portfolio score gauge and watchlist (Integrated!) -->
+        <section class="insight-grid" id="portfolioInsightSection" data-views="overview" aria-label="Portfolio score and priority watchlist">
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h2>Portfolio Risk Score</h2>
+                <p class="card-sub">Average weighted score across assessed businesses (0–100 scale)</p>
+              </div>
+              <span class="tag-demo">Live Metric</span>
+            </div>
+            <div id="gaugeMount"></div>
+          </article>
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h2>Priority Watchlist</h2>
+                <p class="card-sub">Top businesses with highest risk scores. Select to inspect assessment.</p>
+              </div>
+              <span class="tag-demo">Action Required</span>
+            </div>
+            <ul class="watch-list" id="watchlistMount"></ul>
+            <button type="button" class="btn btn-sm watch-more" data-nav="assessments">Manage All Businesses →</button>
+          </article>
+        </section>
+
+        <!-- Analytics charts -->
+        <section class="analytics-grid" data-views="overview" aria-label="Risk analytics">
+          <article class="card" aria-labelledby="distTitle">
+            <div class="card-head">
+              <div>
+                <h2 id="distTitle">Risk Distribution</h2>
+                <p class="card-sub" id="distSub">Businesses categorized by risk severity</p>
+              </div>
+            </div>
+            <div id="distChart"></div>
+          </article>
+
+          <article class="card" aria-labelledby="hazTitle">
+            <div class="card-head">
+              <div>
+                <h2 id="hazTitle">Climate Hazard Comparison</h2>
+                <p class="card-sub">Portfolio exposure breakdown across hazard dimensions</p>
+              </div>
+            </div>
+            <div id="hazardChart"></div>
+          </article>
+        </section>
+
+        <!-- Overview: Quick Actions & Alerts split -->
+        <section class="split-grid" data-views="overview" aria-label="Alerts and actions">
+          <article class="card" aria-labelledby="overviewAlertTitle">
+            <div class="card-head">
+              <div>
+                <h2 id="overviewAlertTitle">Portfolio Alerts</h2>
+                <p class="card-sub">Identified hazard exposures requiring underwriter review</p>
+              </div>
+              <button type="button" class="btn btn-sm" data-nav="alerts">View All Alerts</button>
+            </div>
+            <ul class="alert-list" id="overviewAlertsList"></ul>
+          </article>
+
+          <article class="card" aria-labelledby="qaTitle">
+            <div class="card-head">
+              <div>
+                <h2 id="qaTitle">Quick Management Actions</h2>
+                <p class="card-sub">Execute core workflow tasks</p>
+              </div>
+            </div>
+            <ul class="qa-list">
+              <li>
+                <button type="button" class="qa" id="qaAddBizBtn">
+                  <span class="qa-icon" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
+                  <span class="qa-text"><strong>Add Business Assessment</strong><small>Enter MSME parameters and calculate risk score</small></span>
+                  <svg class="icon qa-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="qa" data-nav="simulator">
+                  <span class="qa-icon" aria-hidden="true"><svg class="icon"><use href="#i-simulator"/></svg></span>
+                  <span class="qa-text"><strong>Open Risk Simulator</strong><small>Test climate stress-test scenarios and what-ifs</small></span>
+                  <svg class="icon qa-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="qa" data-nav="reports">
+                  <span class="qa-icon" aria-hidden="true"><svg class="icon"><use href="#i-reports"/></svg></span>
+                  <span class="qa-text"><strong>Export Portfolio CSV</strong><small>Generate underwriting summary report</small></span>
+                  <svg class="icon qa-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                </button>
+              </li>
+            </ul>
+          </article>
+        </section>
+
+
+        <!-- 2. BUSINESS ASSESSMENTS (MANAGEMENT VIEW) -->
+        <section class="card" id="assessmentsCard" data-views="assessments" aria-labelledby="tblTitle">
+          <div class="card-head">
+            <div>
+              <h2 id="tblTitle">Business Assessments &amp; Risk Portfolio</h2>
+              <p class="card-sub" id="tblSub">Manage MSME accounts, financial vulnerabilities, and localized hazard scores.</p>
+            </div>
+            <div class="action-group">
+              <button type="button" class="btn btn-primary" id="assessmentsAddBtn">
+                <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add Business
+              </button>
+              <button type="button" class="btn btn-outline" id="exportCsvBtn" title="Export portfolio to CSV file">
+                <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Export CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Search, Industry, Risk Filter, and Sort Toolbar -->
+          <div class="toolbar" role="search" aria-label="Filter business assessments">
+            <div class="field grow">
+              <label for="tableSearch">Search Businesses</label>
+              <input id="tableSearch" type="search" placeholder="Search by name, sector or city…" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="typeFilter">Industry / Sector</label>
+              <select id="typeFilter">
+                <option value="all">All Sectors</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="riskFilter">Risk Classification</label>
+              <select id="riskFilter">
+                <option value="all">All Classifications</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="sortSelect">Sort By</label>
+              <select id="sortSelect">
+                <option value="score-desc">Risk score: High to Low</option>
+                <option value="score-asc">Risk score: Low to High</option>
+                <option value="name">Business name: A to Z</option>
+                <option value="date">Last assessed: Newest</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-header-tools">
+            <p class="result-count" id="resultCount" aria-live="polite">Loading businesses…</p>
+          </div>
+
+          <div id="tableMount"></div>
+        </section>
+
+
+        <!-- 3. RISK SIMULATOR VIEW -->
+        <section class="card" data-views="simulator" aria-labelledby="simTitle">
+          <div class="card-head">
+            <div>
+              <h2 id="simTitle">Climate Risk Stress-Testing &amp; Scenario Simulator</h2>
+              <p class="card-sub">Run interactive what-if scenarios on borrower accounts to project risk score changes under severe climate events.</p>
+            </div>
+          </div>
+
+          <div class="sim-grid">
+            <!-- Left: Scenario configuration -->
+            <div class="sim-panel">
+              <div class="card">
+                <h3 style="margin-bottom:12px;font-size:14px;font-weight:600;">1. Select Business &amp; Hazard Inputs</h3>
+                <div class="form-group" style="margin-bottom:14px;">
+                  <label for="simSelectBusiness">Select MSME Borrower</label>
+                  <select id="simSelectBusiness" class="form-select"></select>
+                </div>
+
+                <div style="margin-bottom:14px;">
+                  <label style="display:block;font-size:12px;font-weight:600;margin-bottom:8px;">Scenario Presets</label>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                    <button type="button" class="btn btn-sm btn-outline" id="presetFloodBtn">Severe Flood (+35)</button>
+                    <button type="button" class="btn btn-sm btn-outline" id="presetHeatBtn">Heatwave Peak (+30)</button>
+                    <button type="button" class="btn btn-sm btn-outline" id="presetDroughtBtn">Water Shortage (+40)</button>
+                    <button type="button" class="btn btn-sm btn-outline" id="presetResetBtn">Reset to Baseline</button>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label for="simFlood">Flood Risk Exposure <small>(0–100)</small></label>
+                  <div class="slider-control">
+                    <input type="range" id="simFlood" min="0" max="100" value="50">
+                    <span class="slider-val-box" id="simFloodVal">50</span>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label for="simHeat">Extreme Heat Exposure <small>(0–100)</small></label>
+                  <div class="slider-control">
+                    <input type="range" id="simHeat" min="0" max="100" value="50">
+                    <span class="slider-val-box" id="simHeatVal">50</span>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label for="simWater">Water-Stress Exposure <small>(0–100)</small></label>
+                  <div class="slider-control">
+                    <input type="range" id="simWater" min="0" max="100" value="50">
+                    <span class="slider-val-box" id="simWaterVal">50</span>
+                  </div>
+                </div>
+
+                <div class="form-group" style="margin-bottom:12px;">
+                  <label for="simFin">Financial Vulnerability <small>(0–100)</small></label>
+                  <div class="slider-control">
+                    <input type="range" id="simFin" min="0" max="100" value="50">
+                    <span class="slider-val-box" id="simFinVal">50</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Real-time scenario projection -->
+            <div class="sim-panel">
+              <div class="sim-score-card">
+                <div>
+                  <h3 style="font-size:14px;font-weight:600;margin-bottom:2px;" id="simBizNameDisplay">Scenario Analysis</h3>
+                  <p class="card-sub" id="simBizMetaDisplay">Adjust the sliders on the left to test live stress parameters.</p>
+                </div>
+
+                <div class="sim-compare">
+                  <div class="sim-col">
+                    <span class="sim-col-label">Baseline Score</span>
+                    <div class="sim-col-score" id="simBaseScore">--<small>/100</small></div>
+                    <div id="simBaseBand"></div>
+                  </div>
+                  <div class="sim-arrow">➔</div>
+                  <div class="sim-col">
+                    <span class="sim-col-label">Scenario Score</span>
+                    <div class="sim-col-score" id="simScenScore">--<small>/100</small></div>
+                    <div id="simScenBand"></div>
+                  </div>
+                </div>
+
+                <div style="text-align:center;">
+                  <div class="sim-delta-badge" id="simDeltaBadge">0 Points Change</div>
+                </div>
+
+                <div class="insight" id="simInsightText">
+                  Adjust hazard exposure to project score variance.
+                </div>
+
+                <div class="sim-actions">
+                  <button type="button" class="btn btn-primary" id="simSaveBtn">
+                    Save Scenario Run
+                  </button>
+                  <button type="button" class="btn btn-outline" id="simApplyBaselineBtn">
+                    Apply as Business Baseline
+                  </button>
+                </div>
+              </div>
+
+              <!-- Simulation History -->
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <h3 style="font-size:13px;font-weight:600;">Scenario Run History</h3>
+                    <p class="card-sub">Recent what-if simulation results stored locally</p>
+                  </div>
+                </div>
+                <div id="simHistoryMount">
+                  <p class="muted" style="font-size:12px;">No scenario runs recorded yet. Click "Save Scenario Run" to record one.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- 4. CLIMATE INTELLIGENCE VIEW -->
+        <section class="card" data-views="climate" aria-labelledby="locTitle">
+          <div class="card-head">
+            <div>
+              <h2 id="locTitle">Exposure by Geographic Location</h2>
+              <p class="card-sub">Average illustrative exposure per hazard across clusters and industrial zones.</p>
+            </div>
+            <span class="tag-demo">Geographic Cluster Analysis</span>
+          </div>
+          <div id="locationTable"></div>
+        </section>
+
+        <section class="card" data-views="climate" aria-labelledby="climateHazTitle">
+          <div class="card-head">
+            <div>
+              <h2 id="climateHazTitle">Multi-Hazard Portfolio Exposure Distribution</h2>
+              <p class="card-sub">Cross-hazard breakdown by vulnerability bands.</p>
+            </div>
+          </div>
+          <div id="climateHazardChart"></div>
+        </section>
+
+
+        <!-- 5. ALERTS VIEW -->
+        <section class="card" data-views="alerts" aria-labelledby="fullAlertTitle">
+          <div class="card-head">
+            <div>
+              <h2 id="fullAlertTitle">Climate Risk Alerts &amp; Monitoring</h2>
+              <p class="card-sub">Screening alerts triggered by elevated hazard thresholds across portfolio assets.</p>
+            </div>
+            <div class="field" style="min-width:160px;">
+              <select id="alertStatusFilter">
+                <option value="all">All Alert Statuses</option>
+                <option value="Open">Open</option>
+                <option value="Monitoring">Monitoring</option>
+                <option value="Resolved">Resolved</option>
+              </select>
+            </div>
+          </div>
+          <ul class="alert-list" id="fullAlertsList"></ul>
+        </section>
+
+
+        <!-- 6. REPORTS VIEW -->
+        <section class="report-grid" data-views="reports" aria-labelledby="reportTitle">
+          <div class="report-header-banner">
+            <div>
+              <h2 id="reportTitle" style="font-size:16px;font-weight:650;">Portfolio Climate Risk Intelligence Report</h2>
+              <p class="card-sub" style="margin-top:2px;">Underwriting and sustainability summary for risk governance.</p>
+            </div>
+            <div class="report-tools">
+              <button type="button" class="btn btn-primary" id="reportExportCsvBtn">
+                <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>Download Portfolio CSV
+              </button>
+              <button type="button" class="btn btn-outline" id="reportPrintBtn">Print Report</button>
+            </div>
+          </div>
+
+          <div class="metric-grid" id="reportMetricCards"></div>
+
+          <article class="card">
+            <div class="card-head">
+              <div>
+                <h2>Industry Sector Risk Distribution</h2>
+                <p class="card-sub">Breakdown of assessed accounts and average risk scores per sector</p>
+              </div>
+            </div>
+            <div id="reportSectorTable"></div>
+          </article>
+        </section>
+
+
+        <!-- 7. SETTINGS & METHODOLOGY VIEW -->
+        <section class="card" data-views="settings" aria-labelledby="settingsTitle">
+          <div class="card-head">
+            <div>
+              <h2 id="settingsTitle">Scoring Methodology &amp; System Configuration</h2>
+              <p class="card-sub">Deterministic algorithm reference and future Supabase cloud database mapping.</p>
+            </div>
+          </div>
+
+          <div class="method-grid">
+            <div class="card">
+              <h3 style="font-size:14px;font-weight:600;margin-bottom:8px;">Transparent Deterministic Risk Formula</h3>
+              <p class="card-sub" style="margin-bottom:12px;">This application uses a deterministic rule-based calculation to ensure 100% auditable, repeatable risk scores without black-box machine learning hallucination.</p>
+              
+              <div class="formula-box" style="margin-bottom:14px;">
+                overall_score = round( 0.40 × financial_vulnerability + 0.60 × average(flood, heat, water) )
+              </div>
+
+              <h4 style="font-size:13px;font-weight:600;margin-bottom:6px;">Risk Classification Bands</h4>
+              <ul style="display:grid;gap:6px;font-size:12.5px;">
+                <li><span class="badge b-low"><span class="badge-dot"></span>Low</span> : 0 to 29 (Standard monitoring)</li>
+                <li><span class="badge b-moderate"><span class="badge-dot"></span>Moderate</span> : 30 to 49 (Periodic review)</li>
+                <li><span class="badge b-elevated"><span class="badge-dot"></span>Elevated</span> : 50 to 69 (Mitigation advisory suggested)</li>
+                <li><span class="badge b-high"><span class="badge-dot"></span>High</span> : 70 to 100 (Immediate underwriting review)</li>
+              </ul>
+            </div>
+
+            <div class="card">
+              <h3 style="font-size:14px;font-weight:600;margin-bottom:8px;">Supabase Integration Readiness</h3>
+              <p class="card-sub" style="margin-bottom:12px;">Data access is decoupled into <code>api.js</code> (window.dataService). Connecting Supabase simply requires replacing fetch requests with Supabase JS client calls.</p>
+              
+              <div class="formula-box" style="font-size:12px;">
+-- SQL Migration for Supabase:<br>
+CREATE TABLE businesses (<br>
+&nbsp;&nbsp;id TEXT PRIMARY KEY,<br>
+&nbsp;&nbsp;name TEXT NOT NULL,<br>
+&nbsp;&nbsp;type TEXT NOT NULL,<br>
+&nbsp;&nbsp;city TEXT NOT NULL,<br>
+&nbsp;&nbsp;state TEXT,<br>
+&nbsp;&nbsp;fin INT CHECK (fin >= 0 AND fin <= 100),<br>
+&nbsp;&nbsp;flood INT CHECK (flood >= 0 AND flood <= 100),<br>
+&nbsp;&nbsp;heat INT CHECK (heat >= 0 AND heat <= 100),<br>
+&nbsp;&nbsp;water INT CHECK (water >= 0 AND water <= 100),<br>
+&nbsp;&nbsp;context TEXT,<br>
+&nbsp;&nbsp;is_demo BOOLEAN DEFAULT false,<br>
+&nbsp;&nbsp;created_at TIMESTAMPTZ DEFAULT now()<br>
+);
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <footer class="page-foot">
+        ClimateShield AI · Enterprise Climate Risk Prototype · Deterministic Scoring Engine.
+      </footer>
+    </div>
+  </div>
+
+  <!-- Business Add / Edit Modal -->
+  <div class="modal-scrim" id="businessModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="businessModalTitle">
+      <div class="modal-head">
+        <div class="modal-heading">
+          <h2 id="businessModalTitle">Add Business Assessment</h2>
+          <p id="businessModalSubtitle">Create a new borrower risk profile with deterministic scoring.</p>
+        </div>
+        <button type="button" class="icon-btn" id="modalCloseBtn" aria-label="Close dialog">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+
+      <form id="businessForm" novalidate>
+        <div class="modal-body">
+          <div class="modal-feedback" id="modalFeedback" role="alert"></div>
+
+          <input type="hidden" id="formBizId" value="">
+
+          <div class="form-group">
+            <label for="formBizName">Business Name <small>*</small></label>
+            <input type="text" id="formBizName" class="form-input" required maxlength="120" placeholder="e.g. Sahyadri Agro Foods">
+          </div>
+
+          <div class="form-row-2">
+            <div class="form-group">
+              <label for="formBizType">Industry / Sector <small>*</small></label>
+              <input type="text" id="formBizType" class="form-input" required maxlength="80" placeholder="e.g. Food processing">
+            </div>
+            <div class="form-group">
+              <label for="formBizCity">City <small>*</small></label>
+              <input type="text" id="formBizCity" class="form-input" required maxlength="80" placeholder="e.g. Pune">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="formBizState">State / Region</label>
+            <input type="text" id="formBizState" class="form-input" maxlength="80" placeholder="e.g. Maharashtra">
+          </div>
+
+          <!-- Component Scores with Synced Sliders -->
+          <div style="border-top:1px solid var(--border);padding-top:12px;display:grid;gap:12px;">
+            <div class="form-group">
+              <label for="formBizFin">Financial Vulnerability (Buffer thinness) <small>0–100</small></label>
+              <div class="slider-control">
+                <input type="range" id="formBizFin" min="0" max="100" value="45">
+                <span class="slider-val-box" id="formBizFinVal">45</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="formBizFlood">Flood Exposure Risk <small>0–100</small></label>
+              <div class="slider-control">
+                <input type="range" id="formBizFlood" min="0" max="100" value="40">
+                <span class="slider-val-box" id="formBizFloodVal">40</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="formBizHeat">Extreme Heat Exposure Risk <small>0–100</small></label>
+              <div class="slider-control">
+                <input type="range" id="formBizHeat" min="0" max="100" value="50">
+                <span class="slider-val-box" id="formBizHeatVal">50</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="formBizWater">Water Scarcity Exposure Risk <small>0–100</small></label>
+              <div class="slider-control">
+                <input type="range" id="formBizWater" min="0" max="100" value="35">
+                <span class="slider-val-box" id="formBizWaterVal">35</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Score Preview Widget -->
+          <div class="score-preview-box">
+            <div class="score-preview-main">
+              <div class="score-preview-num" id="formPreviewScore">43<small>/100</small></div>
+              <div class="score-preview-meta">
+                <div id="formPreviewBadge"><span class="badge b-moderate"><span class="badge-dot"></span>Moderate</span></div>
+                <span style="font-size:11px;color:var(--muted);">Calculated Risk</span>
+              </div>
+            </div>
+            <div class="score-preview-formula" id="formPreviewFormula">
+              40% Financial (45) + 60% Climate Avg (42) = 43/100
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="formBizContext">Context &amp; Site Notes <small>Optional</small></label>
+            <textarea id="formBizContext" class="form-textarea" placeholder="Facility location context, mitigation measures, or debt structure details…"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-foot">
+          <button type="button" class="btn btn-outline" id="modalCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="modalSubmitBtn">Save Assessment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-scrim" id="deleteConfirmModal" hidden>
+    <div class="modal confirm-box" role="alertdialog" aria-modal="true" aria-labelledby="deleteConfirmTitle">
+      <div class="modal-head">
+        <div class="modal-heading">
+          <h2 id="deleteConfirmTitle">Confirm Deletion</h2>
+        </div>
+        <button type="button" class="icon-btn" id="deleteCancelIconBtn" aria-label="Cancel">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="confirm-text">Are you sure you want to delete this business assessment? This action cannot be undone.</p>
+        <div class="confirm-detail" id="deleteBizNamePreview">Business Name</div>
+      </div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-outline" id="deleteCancelBtn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="deleteExecuteBtn">Delete Business</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Business Detail Drawer -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" hidden>
+    <div class="drawer-head">
+      <div class="drawer-heading">
+        <p class="eyebrow" id="drawerEyebrow">Business Detail</p>
+        <h2 id="drawerTitle"></h2>
+        <p class="drawer-meta" id="drawerMeta"></p>
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;">
+        <button type="button" class="btn btn-sm btn-outline" id="drawerEditBtn">Edit</button>
+        <button type="button" class="icon-btn" id="drawerClose" aria-label="Close business details">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <!-- Floating Toast Notifications -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Scripts in correct dependency order -->
+  <script src="api.js"></script>
+  <script src="script.js"></script>
+  <script src="enhance.js"></script>
+</body>
+</html>

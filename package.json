@@ -1,0 +1,20 @@
+{
+  "name": "climateshield-ai-js",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ClimateShield AI dashboard with a Node.js/Express API and Supabase persistence",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.49.8",
+    "dotenv": "^18.0.6",
+    "express": "^4.21.2"
+  }
+}
