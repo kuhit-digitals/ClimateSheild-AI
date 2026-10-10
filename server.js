@@ -73,7 +73,7 @@ function createApp(client = configuredClient) {
   app.disable('x-powered-by');
   app.use(express.json({ limit: '100kb' }));
   app.use(['/data', '/server.js', '/package.json', '/.env'], (_req, res) => res.status(404).send('Not found'));
-  app.use(express.static(ROOT, { extensions: ['html'], dotfiles: 'deny' }));
+  app.use(express.static(path.join(ROOT, 'public'), { extensions: ['html'], dotfiles: 'deny' }));
 
   function requireSupabase() {
     if (!client) {
@@ -400,4 +400,5 @@ if (require.main === module) {
   });
 }
 
-module.exports = { app, createApp, enrichBusiness, mapSimulation, riskFor };
+Object.assign(app, { app, createApp, enrichBusiness, mapSimulation, riskFor });
+module.exports = app;
