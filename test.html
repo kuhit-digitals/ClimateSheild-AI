@@ -149,7 +149,7 @@ a { color: inherit; text-decoration: none; }
 .lvl.mid { color: #ffd9a0; background: rgba(255, 184, 77, 0.2); }
 .lvl.low { color: #a6f2da; background: rgba(53, 224, 176, 0.18); }
 .meter { margin-top: 10px; height: 7px; border-radius: 99px; background: rgba(255, 255, 255, 0.14); overflow: hidden; }
-.meter i { display: block; height: 100%; width: calc(var(--v) * 1%); border-radius: inherit; background: linear-gradient(90deg, var(--c1, var(--cyan)), var(--c2, var(--violet))); animation: fill 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.meter i { display: block; height: 100%; width: calc(var(--v) * 1%); border-radius: inherit; background: linear-gradient(90deg, var(--c1, var(--cyan)), var(--c2, var(--violet))); animation: fill 1.2s ease-out both; }
 .sample { position: absolute; z-index: 3; left: 12%; bottom: 0; padding: 7px 14px; border-radius: 999px; font-size: 12.5px; color: #d6e0ff; }
 @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 @keyframes fill { from { width: 0; } }
@@ -195,11 +195,11 @@ a { color: inherit; text-decoration: none; }
 .chart text { font: 500 11px var(--font-body); fill: var(--muted); }
 .chart .grid { stroke: rgba(255, 255, 255, 0.12); stroke-width: 1; }
 .sites { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
-.sites li { display: grid; grid-template-columns: 1fr 92px auto; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 16px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(8, 36, 110, 0.4); box-shadow: 0 6px 14px -6px rgba(4, 24, 85, 0.4); font-size: 14px; }
+.sites li { display: grid; grid-template-columns: 1fr 92px auto; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 16px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(8, 36, 110, 0.4); }
 .sites li span:first-child { min-width: 0; overflow-wrap: anywhere; }
 .sites .meter { margin: 0; }
 .alerts { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
-.alerts li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border-radius: 16px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(8, 36, 110, 0.4); box-shadow: 0 6px 14px -6px rgba(4, 24, 85, 0.4); font-size: 14px; }
+.alerts li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border-radius: 16px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(8, 36, 110, 0.4); box-shadow: 0 8px 20px -10px rgba(4, 24, 85, 0.6); }
 .alerts li i { flex: none; align-self: stretch; width: 4px; border-radius: 4px; }
 .alerts li small { display: block; color: var(--muted); font-size: 12.5px; }
 .alerts .rep { align-items: center; justify-content: space-between; flex-wrap: wrap; }
@@ -210,7 +210,7 @@ a { color: inherit; text-decoration: none; }
 .step { position: relative; padding: clamp(24px, 3vw, 34px); border-radius: 30px; counter-increment: s; }
 .step::before { content: counter(s); display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 22px; border-radius: 50%; font: 700 17px/1 var(--font-display);
   background: linear-gradient(135deg, #7a8cff, #3fb0ff); box-shadow: 0 8px 22px rgba(60, 150, 255, 0.45); }
-.step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -42px; width: 28px; height: 28px; margin-top: -14px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); transform: rotate(45deg) scale(0.6); opacity: 0.85; }
+.step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -42px; width: 28px; height: 28px; margin-top: -14px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); transform: rotate(45deg); opacity: 0.8; }
 .step h3 { font-size: 1.45rem; font-weight: 600; }
 .step p { margin-top: 12px; color: var(--muted); }
 
@@ -227,9 +227,9 @@ a { color: inherit; text-decoration: none; }
   animation: tm-shine 4s linear infinite; filter: drop-shadow(0 0 18px rgba(255, 200, 60, 0.5)); }
 .tm-vs { font-size: clamp(10px, 2.6vw, 15px); font-size: clamp(10px, 2.6cqw, 15px); opacity: 0.88; letter-spacing: 0.2em; color: #e8f0ff; max-width: 100%; }
 .tm-names { position: absolute; left: 0; right: 0; bottom: 78px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 40px; padding: 0 12px; pointer-events: none; }
-.tm-nm { position: relative; padding-bottom: 7px; font: 700 clamp(15px, 4.4vw, 36px) / 1.2 var(--font-display); font-size: clamp(15px, 4.4cqw, 36px); letter-spacing: 0.08em; color: #fff3b0; text-shadow: 0 0 8px rgba(255, 190, 50, 0.45); white-space: nowrap; }
+.tm-nm { position: relative; padding-bottom: 7px; font: 700 clamp(15px, 4.4vw, 36px) / 1.2 var(--font-display); font-size: clamp(15px, 4.4cqw, 36px); letter-spacing: 0.08em; color: #fff3b0; text-transform: uppercase; }
 .tm-nm span { display: inline-block; opacity: 0; transform: translateY(30px) scale(0.5); animation: tm-up 0.5s cubic-bezier(0.2, 1.5, 0.4, 1) forwards; }
-.tm-nm::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: linear-gradient(90deg, transparent, #ffd34d, transparent); transform: scaleX(0); animation: tm-ln 0.7s var(--d) forwards; }
+.tm-nm::after { content: ""; position: absolute; left: 0; bottom: 0; height: 2px; width: 100%; background: linear-gradient(90deg, transparent, #ffd34d, transparent); transform: scaleX(0); animation: tm-ln 0.8s ease forwards; animation-delay: var(--d, 0s); }
 .tm-names.tm-static .tm-nm span { animation: none; opacity: 1; transform: none; }
 .tm-names.tm-static .tm-nm::after { animation: none; transform: scaleX(1); }
 @keyframes tm-shine { to { background-position: 200% 0; } }
@@ -238,7 +238,7 @@ a { color: inherit; text-decoration: none; }
 @keyframes tm-ln { to { transform: scaleX(1); } }
 
 /* ---------- final cta ---------- */
-.final { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 32px; padding: clamp(32px, 5vw, 64px); border-radius: 44px 44px 44px 160px;
+.final { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 32px; padding: clamp(32px, 5vw, 64px); border-radius: 44px 44px 44px 100px;
   background: linear-gradient(120deg, rgba(170, 190, 255, 0.26), rgba(70, 140, 235, 0.16) 55%, rgba(190, 236, 255, 0.24)); }
 .final h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.12; font-weight: 700; max-width: 20ch; }
 .final p { margin-top: 14px; color: #d3dcf7; max-width: 48ch; font-size: 17px; }
@@ -259,7 +259,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
   box-shadow: 0 1px 2px rgba(4, 20, 70, 0.4), 0 12px 28px -6px rgba(4, 24, 85, 0.4), 0 40px 80px -14px rgba(4, 22, 80, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35); }
 .auth-dialog::backdrop { background: rgba(4, 20, 70, 0.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
 .auth-dialog form { position: relative; display: grid; gap: 8px; padding: 28px; }
-.auth-x { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(215, 235, 255, 0.3); background: rgba(255, 255, 255, 0.08); color: #fff; font-size: 20px; line-height: 1; cursor: pointer; }
+.auth-x { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(215, 235, 255, 0.3); background: rgba(255, 255, 255, 0.08); color: #fff; }
 .auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin: 0 44px 12px 0; border-radius: 999px; background: rgba(4, 20, 70, 0.35); }
 .auth-tabs button { min-height: 38px; border: 0; border-radius: 999px; background: transparent; color: #cddcf8; font: 600 14px/1 var(--font-body); cursor: pointer; }
 .auth-tabs button[aria-pressed="true"] { background: rgba(255, 255, 255, 0.18); color: #fff; }
@@ -275,8 +275,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
 .auth-submit { min-height: 48px; margin-top: 4px; border: 0; border-radius: 999px; color: #fff; font: 600 15px/1 var(--font-body); cursor: pointer;
   background: linear-gradient(100deg, #7a8cff, #3fb0ff); box-shadow: 0 10px 30px rgba(60, 150, 255, 0.45); }
 .auth-submit:disabled { opacity: 0.6; cursor: wait; }
-.auth-google { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 6px; border: 1px solid rgba(8, 36, 110, 0.35); border-radius: 999px; background: #fff; color: #1f2937; font: 600 15px/1 var(--font-body); cursor: pointer;
-  box-shadow: 0 8px 20px -6px rgba(4, 24, 85, 0.45); transition: transform 0.2s, box-shadow 0.2s; }
+.auth-google { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; margin-top: 6px; border: 1px solid rgba(8, 36, 110, 0.35); border-radius: 999px; background: rgba(255,255,255,0.09); color: #fff; font: 600 15px/1 var(--font-body); cursor: pointer; box-shadow: 0 8px 20px -6px rgba(4, 24, 85, 0.45); transition: transform 0.2s, box-shadow 0.2s; }
 .auth-google:hover { transform: translateY(-2px); box-shadow: 0 12px 26px -6px rgba(4, 24, 85, 0.55); }
 .auth-google:disabled { opacity: 0.6; cursor: wait; transform: none; }
 .auth-google svg { width: 20px; height: 20px; flex: none; }
@@ -344,7 +343,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
     <div class="wrap">
       <nav class="nav glass" aria-label="Main">
         <a class="logo" href="#top" aria-label="ClimateShield AI home">
-          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 33 8v10c0 9-5.5 15.5-13 19C12.500 33.500 7 27 7 18V8z" fill="url(#logoGrad)" fill-opacity=".25" stroke="url(#logoGrad)" stroke-width="2" stroke-linejoin="round"/><path d="M12 21c2.500-3 5-3 8 0s5.500 3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M14 15.500c2-2 4-2 6 0s4 2 6 0" fill="none" stroke="#8fdcff" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 33 8v10c0 9-5.5 15.5-13 19C12.500 33.500 7 27 7 18V8z" fill="url(#logoGrad)" fill-opacity=".25" stroke="url(#logoGrad)" stroke-width="2.5"/><path d="M20 10 27 13v7c0 6-3.3 9.8-7 12-3.7-2.2-7-6-7-12v-7z" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 16v8M17 19h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
           <span>ClimateShield <em>AI</em></span>
         </a>
         <ul class="nav-links">
@@ -355,7 +354,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
         </ul>
         <div class="nav-actions">
           <a class="nav-signin" href="#" data-auth="signIn">Sign In</a>
-          <a class="btn btn-primary btn-sm" href="#" data-auth="getStarted">Get Started</a>
+          <a class="btn btn-primary btn-sm" href="https://climatesheild-ai.onrender.com/" target="_blank" rel="noopener">Open Dashboard</a>
           <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
@@ -367,6 +366,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
         <a href="#how">How It Works</a>
         <a href="#team">Meet Our Team</a>
         <a href="#" data-auth="signIn">Sign In</a>
+        <a href="https://climatesheild-ai.onrender.com/" target="_blank" rel="noopener">Open Dashboard</a>
       </div>
     </div>
   </header>
@@ -378,24 +378,24 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
         <h1 id="h1">See Climate Risk Before It Becomes <span class="grad">Business Risk.</span></h1>
         <p class="lead">Assess environmental exposure, understand business vulnerability, and explore climate scenarios in one unified risk intelligence workspace.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#features">Explore ClimateShield
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <a class="btn btn-ghost" href="#" data-auth="signIn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.500-4 4.500-6 8-6s6.500 2 8 6"/></svg>Sign In</a>
+          <a class="btn btn-primary" href="https://climatesheild-ai.onrender.com/" target="_blank" rel="noopener">Open Dashboard
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#features">Explore ClimateShield</a>
         </div>
         <ul class="trust">
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.500 3 7.500 7 9 4-1.500 7-4.500 7-9V6z"/></svg></span><span><b>Business-level scores</b><small>For every site you add</small></span></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><span><b>Scenario ready</b><small>Compare possible futures</small></span></li>
-          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 13h5M10 17h5"/></svg></span><span><b>Report ready</b><small>Share with your team</small></span></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.500 3 7.500 7 9 4-1.500 7-4.500 7-9V6z"/><path d="M12 8v5M9.5 10.5h5"/></svg></span><div><b>Climate-ready</b><small>Built for real risk</small></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><div><b>Portfolio view</b><small>One screen overview</small></div></li>
+          <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h6M10 16h6"/></svg></span><div><b>Actionable output</b><small>Reports and alerts</small></div></li>
         </ul>
       </div>
 
       <div class="scene">
         <svg viewBox="0 0 600 600" role="img" aria-label="A glowing planet with a glass shield in front of it, circled by an orbit line">
           <defs>
-            <radialGradient id="planet" cx="34%" cy="28%" r="80%"><stop offset="0" stop-color="#e2f8ff"/><stop offset=".3" stop-color="#7cc8ff"/><stop offset=".68" stop-color="#3a78e6"/><stop offset="1" stop-color="#1b3f9a"/></radialGradient>
-            <radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset=".72" stop-color="#8fdcff" stop-opacity="0"/><stop offset=".88" stop-color="#8fdcff" stop-opacity=".35"/><stop offset="1" stop-color="#8b4dff" stop-opacity="0"/></radialGradient>
-            <linearGradient id="shieldEdge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".5" stop-color="#8fdcff" stop-opacity=".7"/><stop offset="1" stop-color="#8b4dff" stop-opacity=".8"/></linearGradient>
+            <radialGradient id="planet" cx="34%" cy="28%" r="80%"><stop offset="0" stop-color="#e2f8ff"/><stop offset=".3" stop-color="#7cc8ff"/><stop offset=".68" stop-color="#3a78e6"/><stop offset="1" stop-color="#081d49"/></radialGradient>
+            <radialGradient id="halo" cx="50%" cy="50%" r="50%"><stop offset=".72" stop-color="#8fdcff" stop-opacity="0"/><stop offset=".88" stop-color="#8fdcff" stop-opacity=".35"/><stop offset="1" stop-color="#8fdcff" stop-opacity="0"/></radialGradient>
+            <linearGradient id="shieldEdge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".5" stop-color="#8fdcff" stop-opacity=".7"/><stop offset="1" stop-color="#b79bff" stop-opacity=".9"/></linearGradient>
             <linearGradient id="shieldFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".30"/><stop offset="1" stop-color="#8b4dff" stop-opacity=".12"/></linearGradient>
             <clipPath id="pclip"><circle cx="300" cy="300" r="215"/></clipPath>
           </defs>
@@ -418,17 +418,17 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
         </svg>
 
         <article class="mcard glass flood" style="--c1:#8fdcff;--c2:#3b6bff">
-          <div class="mcard-top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 19c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></span><h3>Flood Risk</h3></div>
+          <div class="mcard-top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 13c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></span><h3>Flood risk</h3></div>
           <div class="val"><b>72<span>/100</span></b><span class="lvl high">High</span></div>
           <div class="meter"><i style="--v:72"></i></div>
         </article>
         <article class="mcard glass heat" style="--c1:#ffb84d;--c2:#ff6b7a">
-          <div class="mcard-top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span><h3>Heat Exposure</h3></div>
+          <div class="mcard-top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span><h3>Heat risk</h3></div>
           <div class="val"><b>58<span>/100</span></b><span class="lvl mid">Elevated</span></div>
           <div class="meter"><i style="--v:58"></i></div>
         </article>
         <article class="mcard glass water" style="--c1:#8b4dff;--c2:#8fdcff">
-          <div class="mcard-top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/></svg></span><h3>Water Stress</h3></div>
+          <div class="mcard-top"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/><path d="M9 14c.8 1.1 1.8 1.7 3 1.7 1.2 0 2.2-.6 3-1.7"/></svg></span><h3>Water stress</h3></div>
           <div class="val"><b>81<span>/100</span></b><span class="lvl high">Severe</span></div>
           <div class="meter"><i style="--v:81"></i></div>
         </article>
@@ -438,10 +438,10 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
 
     <div class="wrap">
       <ul class="stats glass" aria-label="What is inside">
-        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/></svg></span><span><b>3</b><small>Climate hazards</small></span></li>
-        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.500"/><rect x="13" y="4" width="7" height="7" rx="1.500"/><rect x="4" y="13" width="7" height="7" rx="1.500"/><rect x="13" y="13" width="7" height="7" rx="1.500"/></svg></span><span><b>4</b><small>Core modules</small></span></li>
-        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg></span><span><b>3</b><small>Steps to a priority list</small></span></li>
-        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.500"/><path d="M2.500 20c.8-3.500 3.200-5.500 6.500-5.500s5.700 2 6.500 5.500M16 4.500a3.500 3.500 0 0 1 0 7M18 14.800c2 .7 3.200 2.500 3.600 5.200"/></svg></span><span><b>1</b><small>Shared workspace</small></span></li>
+        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s-6 7-6 11a6 6 0 0 0 12 0c0-4-6-11-6-11z"/><path d="M9 14c.8 1.1 1.8 1.7 3 1.7 1.2 0 2.2-.6 3-1.7"/></svg></span><div><b>4</b><small>Climate factors</small></div></li>
+        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="4" rx="1.5"/><rect x="13" y="10" width="7" height="10" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/></svg></span><div><b>12+</b><small>Risk views</small></div></li>
+        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg></span><div><b>3x</b><small>Faster signal</small></div></li>
+        <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c1-3.8 4-5.5 8.5-5.5s7.5 1.7 8.5 5.5"/></svg></span><div><b>1</b><small>Connected dashboard</small></div></li>
       </ul>
     </div>
 
@@ -454,7 +454,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
       <div class="bento">
         <article class="bx b1 glass">
           <div>
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.500 3 7.500 7 9 4-1.500 7-4.500 7-9V6z"/><path d="m9 12 2 2 4-4" stroke-linecap="round"/></svg></span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v6c0 4.500 3 7.500 7 9 4-1.500 7-4.500 7-9V6z"/><path d="M12 8v5M9.5 10.5h5"/></svg></span>
             <h3>Business Risk Assessment</h3>
             <p style="margin-top:10px">Score a business or site against flood, heat and water stress, and see which factors push each score up.</p>
           </div>
@@ -470,14 +470,14 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
 
         <article class="bx b2">
           <div>
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 3 8-9"/><path d="M15 6h5v5"/></svg></span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 3 8-9"/><path d="M14 6h7v7"/></svg></span>
             <h3>Climate Scenario Simulation</h3>
             <p style="margin-top:10px">Run the same business through different climate pathways and compare how risk changes by 2050.</p>
           </div>
           <div class="viz">
             <svg class="chart" viewBox="0 0 400 176" role="img" aria-label="Illustrative chart of three scenarios, with risk index rising to different levels by 2050">
               <text x="0" y="12">Risk index (illustrative)</text>
-              <line class="grid" x1="0" y1="40" x2="300" y2="40"/><line class="grid" x1="0" y1="80" x2="300" y2="80"/><line class="grid" x1="0" y1="120" x2="300" y2="120"/><line class="grid" x1="0" y1="150" x2="300" y2="150"/>
+              <line class="grid" x1="0" y1="40" x2="300" y2="40"/><line class="grid" x1="0" y1="80" x2="300" y2="80"/><line class="grid" x1="0" y1="120" x2="300" y2="120"/><line class="grid" x1="0" y1="160" x2="300" y2="160"/>
               <polyline points="10,120 300,98" fill="none" stroke="#8fdcff" stroke-width="3" stroke-linecap="round"/>
               <polyline points="10,120 300,66" fill="none" stroke="#b79bff" stroke-width="3" stroke-linecap="round"/>
               <polyline points="10,120 300,34" fill="none" stroke="#ff6b7a" stroke-width="3" stroke-linecap="round"/>
@@ -490,7 +490,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
 
         <article class="bx b3 glass">
           <div>
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.500"/><rect x="13" y="4" width="7" height="7" rx="1.500"/><rect x="4" y="13" width="7" height="7" rx="1.500"/><rect x="13" y="13" width="7" height="7" rx="1.500"/></svg></span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="4" rx="1.5"/><rect x="13" y="10" width="7" height="10" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/></svg></span>
             <h3>Portfolio Risk Overview</h3>
             <p style="margin-top:10px">Rank every site on one screen so the most exposed locations are the first you see.</p>
           </div>
@@ -503,7 +503,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
 
         <article class="bx b4">
           <div>
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l1.500 2h-15z"/><path d="M10 21h4"/></svg></span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6"/><path d="M8 17h8"/><path d="M9 21h6"/></svg></span>
             <h3>Risk-Based Alerts and Reporting</h3>
             <p style="margin-top:10px">Set thresholds that matter to you, get told when a score crosses one, and turn the results into a report your team can read.</p>
           </div>
@@ -551,8 +551,9 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
           <p>Create your workspace, add your first business, and see its climate risk in minutes.</p>
         </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="#" data-auth="getStarted">Get Started
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-primary" href="https://climatesheild-ai.onrender.com/" target="_blank" rel="noopener">Open Dashboard
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
           <a class="btn btn-ghost" href="#" data-auth="signIn">Sign In</a>
         </div>
       </div>
@@ -564,18 +565,18 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
       <div class="foot">
         <div>
           <a class="logo" href="#top" aria-label="ClimateShield AI home">
-            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 33 8v10c0 9-5.5 15.5-13 19C12.500 33.500 7 27 7 18V8z" fill="url(#logoGrad)" fill-opacity=".25" stroke="url(#logoGrad)" stroke-width="2" stroke-linejoin="round"/><path d="M12 21c2.500-3 5-3 8 0s5.500 3 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M14 15.500c2-2 4-2 6 0s4 2 6 0" fill="none" stroke="#8fdcff" stroke-width="2" stroke-linecap="round"/></svg>
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 33 8v10c0 9-5.5 15.5-13 19C12.500 33.500 7 27 7 18V8z" fill="url(#logoGrad)" fill-opacity=".25" stroke="url(#logoGrad)" stroke-width="2.5"/><path d="M20 10 27 13v7c0 6-3.3 9.8-7 12-3.7-2.2-7-6-7-12v-7z" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><path d="M20 16v8M17 19h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
             <span>ClimateShield <em>AI</em></span>
           </a>
           <p>Climate risk intelligence that helps businesses see exposure early and act on it.</p>
         </div>
         <div>
           <h4>Product</h4>
-          <ul><li><a href="#features">Risk assessment</a></li><li><a href="#features">Scenario simulation</a></li><li><a href="#features">Portfolio overview</a></li><li><a href="#features">Alerts and reports</a></li></ul>
+          <ul><li><a href="#features">Risk assessment</a></li><li><a href="#features">Scenario simulation</a></li><li><a href="#features">Portfolio overview</a></li><li><a href="#features">Alerts and reporting</a></li></ul>
         </div>
         <div>
           <h4>Explore</h4>
-          <ul><li><a href="#how">How it works</a></li><li><a href="#team">Meet our team</a></li><li><a href="#" data-auth="signIn">Sign In</a></li><li><a href="#" data-auth="getStarted">Get Started</a></li></ul>
+          <ul><li><a href="#how">How it works</a></li><li><a href="#team">Meet our team</a></li><li><a href="#" data-auth="signIn">Sign In</a></li><li><a href="https://climatesheild-ai.onrender.com/" target="_blank" rel="noopener">Open Dashboard</a></li></ul>
         </div>
         <div>
           <h4>Legal</h4>
@@ -603,7 +604,7 @@ footer { margin-top: clamp(64px, 9vw, 110px); padding-block: 48px 36px; border-t
     <h2 id="authTitle">Welcome to ClimateShield AI</h2>
     <p id="authSub">Sign in with Google to open your ClimateShield AI workspace.</p>
     <button type="button" class="auth-google" id="authGoogle">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.8 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.55c0-1.64-.15-3.22-.42-4.74H24v9h12.7c-.55 2.94-2.21 5.43-4.72 7.12l7.66 5.95C43.78 37.3 46.5 31.46 46.5 24.55z"/><path fill="#FBBC05" d="M32.98 36.93c-2.02 1.36-4.61 2.18-8.98 2.18-6.7 0-12.36-4.53-14.38-10.6l-8.18 6.35C4.3 42.06 13.26 48 24 48c7.11 0 13.06-2.34 17.42-6.47l-8.44-4.6z"/><path fill="#34A853" d="M10.6 28.51A14.46 14.46 0 0 1 9.8 24c0-1.57.27-3.1.75-4.51L2.56 13.22A23.92 23.92 0 0 0 0 24c0 3.86.92 7.51 2.56 10.74l8.04-6.23z"/><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.8 9.5 24 9.5z"/></svg>
       Continue with Google
     </button>
     <p class="auth-msg" id="authMsg" role="alert" aria-live="polite"></p>
@@ -616,7 +617,7 @@ import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/fir
 
 (function () {
   const $ = (id) => document.getElementById(id);
-  const DASHBOARD_URL = "index.html";
+  const DASHBOARD_URL = "https://climatesheild-ai.onrender.com/";
   const dlg = $("authDialog");
   const form = $("authForm");
   const msg = $("authMsg");
@@ -635,7 +636,7 @@ import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/fir
     link.addEventListener("click", (event) => {
       event.preventDefault();
       if (auth.currentUser) {
-        location.href = DASHBOARD_URL;
+        window.open(DASHBOARD_URL, "_blank", "noopener,noreferrer");
         return;
       }
       openAuth();
@@ -653,7 +654,7 @@ import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/fir
     say("Opening Google sign-in…");
     try {
       await signInWithPopup(auth, googleProvider);
-      location.href = DASHBOARD_URL;
+      window.open(DASHBOARD_URL, "_blank", "noopener,noreferrer");
     } catch (error) {
       console.error("Firebase Google sign-in failed:", error);
       const messages = {
@@ -672,6 +673,8 @@ import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/fir
       link.href = DASHBOARD_URL;
       link.dataset.signedIn = "1";
       link.textContent = link.dataset.auth === "getStarted" ? "Open Dashboard" : "Dashboard";
+      link.setAttribute("target", "_blank");
+      link.setAttribute("rel", "noopener noreferrer");
     });
   });
 })();
@@ -686,14 +689,12 @@ import { signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/fir
   let W = 1, H = 1, D = Math.min(devicePixelRatio || 1, 2), mx = 0, my = 0, t = 0, e = 1;
   let T0 = performance.now() - 6000, intro = false, running = false;
 
-  // fusion core particles
   const core = [...Array(260)].map(() => { const a = R() * T, b = Math.acos(2 * R() - 1), r = 60 + R() * 40; return { a, b, r, s: .2 + R() * .6, h: R() < .5 ? 45 : 190 }; });
-  // team ring (gold) and rivals (grey-blue)
   const team = NAMES.map((nm, i) => ({ a: i / 3 * T + .5, r: 230, gold: 1 }));
   const rivals = [...Array(14)].map((_, i) => ({ a: i / 14 * T + .2, r: 420 + R() * 60, y: (R() - .5) * 160, gold: 0 }));
   const stars = [...Array(220)].map(() => ({ x: (R() - .5) * 2400, y: (R() - .5) * 1400, z: R() * 1400 }));
 
-  function P(px, py, pz, ry, rx) { // rotate and project
+  function P(px, py, pz, ry, rx) {
     const cx = Math.cos(ry), sx = Math.sin(ry); const X = px * cx + pz * sx; let Z = -px * sx + pz * cx;
     const cy = Math.cos(rx), sy = Math.sin(rx); const Y = py * cy - Z * sy; Z = py * sy + Z * cy;
     const f = 700 / (700 + Z + 300), k = Math.min(1, W / 900 + .3);
